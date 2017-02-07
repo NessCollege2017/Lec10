@@ -6,19 +6,30 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 20; i++) {
-            int result = RandomUtils.nextRandom(-5, 10);
-            System.out.println(result);
-        }
+        q10b();
     }
 
+    static boolean isZoher(int[][] arr, int k, int j, int num){
+        //validate the input
+        if (k + 2 >=arr.length || j + 2 >= arr[k].length)
+            return false;
+
+        int sum = 0;
+
+        for (int row = k; row <= k+2; row++) {
+            for (int col = j; col <= j + 2; col++) {
+                sum+=arr[row][col];
+            }
+        }
+        return sum > num;
+    }
 
     static void q10b(){
         int[] results = new int[84]; //0-83
         for (int i = 0; i < 672; i++) {
             int[] arr = new int[83];
             for (int j = 0; j < arr.length; j++) {
-                arr[j] = IO.getInt("Enter the next number:");
+                arr[j] = RandomUtils.nextRandom(-10, 1);
             }
 
             int sCount = mofaShlili(arr);
